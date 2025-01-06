@@ -1,0 +1,77 @@
+/* 基本リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: auto;
+    overflow-y: hidden; /* 縦スクロール無効 */
+    height: 100vh; /* 高さを画面いっぱいに */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+}
+
+/* 画像セクション */
+.content-section img {
+    width: auto; /* 横幅を自動 */
+    height: 100vh; /* 高さを画面にフィット */
+    object-fit: cover; /* アスペクト比を保ちながら画像を調整 */
+    display: block;
+    margin: 0;
+}
+
+/* ボタンのコンテナ */
+.button-container {
+    position: absolute; /* スクロール時に追従する */
+    bottom: 20px; /* 下からの距離 */
+    left: 20px; /* 左からの距離 */
+    z-index: 1000; /* 画像より前面に表示 */
+    display: flex; /* ボタンを横並びにする */
+    gap: 10px; /* ボタン間の間隔 */
+}
+
+/* 再生ボタンと停止ボタン */
+.fixed-button {
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* 円形のボタン */
+    width: 60px;
+    height: 60px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.stop-button {
+    background-color: rgba(255, 0, 0, 0.7); /* 停止ボタンは赤 */
+}
+
+.fixed-button:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* ホバー時に背景色を変更 */
+    color: #000;
+}
+
+/* 再生中にボタンが追従するアニメーション */
+.button-container.move {
+    position: absolute;
+    transition: left 0.1s linear; /* 滑らかな追従 */
+}
